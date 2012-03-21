@@ -66,6 +66,7 @@ abstract class PB_Meta_Box {
         // Check cache
         if ( isset( $this->fields_flat ) ) return $this->fields_flat;
 
+        $fields = array();
         foreach ( $this->get_fields() as $meta_box_fields ) {
             foreach ( $meta_box_fields as $field ) {
 
