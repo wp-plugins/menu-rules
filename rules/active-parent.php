@@ -9,7 +9,7 @@ class Menu_Rules_Handler_Active_Parent extends Menu_Rules_Handler {
     protected $data;
 
     function __construct() {
-        $this->setup( __('Emulate current page as a child but do not create a menu item.') );
+        $this->setup( __('Emulate current page as a child but do not create a menu item.', 'menu-rules') );
     }
 
     function handler( $data ) {

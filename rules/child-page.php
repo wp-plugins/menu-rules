@@ -7,7 +7,7 @@ include_once dirname( __FILE__ ) . '/active-parent.php';
 class Menu_Rules_Handler_Child_Page extends Menu_Rules_Handler_Active_Parent {
 
     function __construct() {
-        $this->setup( __('Insert the current page into the menu as a child.') );
+        $this->setup( __('Insert the current page into the menu as a child.', 'menu-rules') );
     }
 
     function handler( $data ) {

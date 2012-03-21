@@ -29,14 +29,14 @@ class Menu_Rules_Meta_Box extends PB_Meta_Box {
         // Condition fields
         $fields['conditions_adv'] = array(
             array(
-                'title' => __('When these conditions match:'),
+                'title' => __('When these conditions match:', 'menu-rules'),
                 'type' => 'textarea',
                 'name' => 'menu-rules-conditional-exp',
 				'extra' => array(
                     'class' => 'code',
                     'rows' => 5,
                     'cols' => 60,
-                    'placeholder' => __('eg is_single()'),
+                    'placeholder' => __('eg is_single()', 'menu-rules'),
                 )
             ),
         );
@@ -44,10 +44,10 @@ class Menu_Rules_Meta_Box extends PB_Meta_Box {
         // Rules
         $fields['rules'] = array(
             array(
-                'title' => __( 'Apply these rules:' ),
+                'title' => __( 'Apply these rules:' , 'menu-rules'),
                 'type' => 'checkbox',
                 'name' => 'menu-rules-rules',
-                'text' => __( 'Choose rules' ),
+                'text' => __( 'Choose rules' , 'menu-rules'),
                 'value' => array_combine(
                     array_keys( Menu_Rules::get_var( 'rules_handlers' ) ),
                     array_map( create_function( '$v', 'return $v->description;' ), Menu_Rules::get_var( 'rules_handlers' ) )
@@ -58,12 +58,12 @@ class Menu_Rules_Meta_Box extends PB_Meta_Box {
         // Nav menus
         $fields['nav_menus'] = array(
             array(
-                'title' => __( 'To these menu items:' ),
+                'title' => __( 'To these menu items:' , 'menu-rules'),
                 'type' => 'select',
                 'name' => 'menu-rules-menu-items',
                 'value' => $nav_menu_dropdown_values,
                 'multiple' => true,
-                'text' => __( 'Select menu items' ),
+                'text' => __( 'Select menu items' , 'menu-rules'),
                 'extra' => array(
                     'class' => 'menu-rules-items-select',
                     'required' => 'required',
@@ -81,7 +81,7 @@ class Menu_Rules_Meta_Box extends PB_Meta_Box {
 
         // User need to create a menu before using menu rules
         if ( ! $nav_menus ) {
-            echo '<p class="error-message">' . sprintf( __('You aren\'t using WordPress custom menus. %sCreate one now to start using Menu Rules%s'), '<a href="' . admin_url( 'nav-menus.php' ) . '">', '</a>' ) . '</p>';
+            echo '<p class="error-message">' . sprintf( __('You aren\'t using WordPress custom menus. %sCreate one now to start using Menu Rules%s', 'menu-rules'), '<a href="' . admin_url( 'nav-menus.php' ) . '">', '</a>' ) . '</p>';
             return;
         }
 
@@ -90,11 +90,11 @@ class Menu_Rules_Meta_Box extends PB_Meta_Box {
         echo PB_Forms::table( $this->get_fields( 'conditions_adv' ), $postmeta );
         echo PB_Forms::table( $this->get_fields( 'rules' ), $postmeta );
         echo PB_Forms::table( $this->get_fields( 'nav_menus' ), $postmeta );
-        echo '<p>' . sprintf( __('A full list of conditonal tags can be %sfound on the WordPress.org codex%s. Do not include an if statement or a semicolon.'), '<a href="http://codex.wordpress.org/Conditional_Tags" target="_blank">', '</a>' ) . '</p>';
-        echo '<h4>' . __('Condition Examples') . '</h4>';
-        echo '<p>' . sprintf( __('%sis_single()%s applies rules when viewing a single post.'), '<code>', '</code>' ) . '</p>';
-        echo '<p>' . sprintf( __('%sis_singular( \'product\' )%s applies rules when viewing a single product.'), '<code>', '</code>' ) . '</p>';
-        echo '<p>' . sprintf( __('%s( is_singular( \'book\' ) || is_singular( \'journal\' ) ) && has_tag( \'fiction\' )%s applies rules when showing a single book or journal which is tagged as fiction'), '<code>', '</code>' ) . '</p>';
+        echo '<p>' . sprintf( __('A full list of conditonal tags can be %sfound on the WordPress.org codex%s. Do not include an if statement or a semicolon.', 'menu-rules'), '<a href="http://codex.wordpress.org/Conditional_Tags" target="_blank">', '</a>' ) . '</p>';
+        echo '<h4>' . __('Condition Examples', 'menu-rules') . '</h4>';
+        echo '<p>' . sprintf( __('%sis_single()%s applies rules when viewing a single post.', 'menu-rules'), '<code>', '</code>' ) . '</p>';
+        echo '<p>' . sprintf( __('%sis_singular( \'product\' )%s applies rules when viewing a single product.', 'menu-rules'), '<code>', '</code>' ) . '</p>';
+        echo '<p>' . sprintf( __('%s( is_singular( \'book\' ) || is_singular( \'journal\' ) ) && has_tag( \'fiction\' )%s applies rules when showing a single book or journal which is tagged as fiction', 'menu-rules'), '<code>', '</code>' ) . '</p>';
     }
 
 
