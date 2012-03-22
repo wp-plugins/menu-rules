@@ -15,6 +15,7 @@ class Menu_Rules_Meta_Box extends PB_Meta_Box {
         $nav_menus = wp_get_nav_menus( array('orderby' => 'name') );
         if ( ! $nav_menus ) return;
 
+        $nav_menu_dropdown_values = array();
         foreach ( $nav_menus as $nav_menu_obj ) {
 
             // Check the menu isn't empty
@@ -25,6 +26,9 @@ class Menu_Rules_Meta_Box extends PB_Meta_Box {
                 array_map( create_function( '$v', 'return empty( $v->menu_item_parent ) ? $v->title : "-- " . $v->title;' ), $nav_menu_items )
             );
         }
+
+        // No items in any menus
+        if ( ! $nav_menu_dropdown_values) return;
 
         // Condition fields
         $fields['conditions_adv'] = array(
@@ -77,11 +81,9 @@ class Menu_Rules_Meta_Box extends PB_Meta_Box {
     // Display meta box
     function display( $post ) {
 
-        $nav_menus = wp_get_nav_menus( array('orderby' => 'name') );
-
-        // User need to create a menu before using menu rules
-        if ( ! $nav_menus ) {
-            echo '<p class="error-message">' . sprintf( __('You aren\'t using WordPress custom menus. %sCreate one now to start using Menu Rules%s', 'menu-rules'), '<a href="' . admin_url( 'nav-menus.php' ) . '">', '</a>' ) . '</p>';
+        // User need to create a menu or before using menu rules
+        if ( ! $this->get_fields() ) {
+            echo '<p class="error-message">' . sprintf( __('You haven\'t setup any WordPress custom menus. %sCreate one now to start using Menu Rules%s', 'menu-rules'), '<a href="' . admin_url( 'nav-menus.php' ) . '">', '</a>' ) . '</p>';
             return;
         }
 
