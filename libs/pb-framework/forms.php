@@ -216,19 +216,26 @@ class PB_Forms {
 		}
 
 		$opts = '';
+        $counter = 0;
 		foreach ( $values as $value => $title ) {
+            if ( $counter > 0 ) $opts .= '<br/>';
+
 			if ( empty( $value ) || empty( $title ) )
 				continue;
-
+            
 			$checkbox_args = array(
 				'type' => 'radio',
 				'value' => $value,
-				'checked' => ( (string) $value == (string) $selected ),
+                'checked' => is_array( $selected )
+                    ? in_array( $value, $selected )
+                    : ( (string) $value == (string) $selected ),
 				'desc' => $title,
 				'desc_pos' => 'after'
 			);
             if ( isset( $extra ) ) $checkbox_args['extra'] = $extra;
             $opts .= self::_checkbox( $checkbox_args );
+
+            $counter++;
 		}
 
 		return self::add_desc( $opts, $desc, $desc_pos );

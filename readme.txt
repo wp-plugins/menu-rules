@@ -3,8 +3,8 @@ Contributors: phill_brown
 Donate link: http://pbweb.co.uk/donate
 Tags: menus, menu, context, rules, parent menu, active menu
 Requires at least: 3.2
-Tested up to: 3.3
-Stable tag: 1.0
+Tested up to: 3.3.2
+Stable tag: 1.1
 
 An extension of the menu system with context-based rules and a flexible framework to write your own.
 
@@ -43,3 +43,11 @@ If you're stuck, ask me for help on [Twitter](http://twitter.com/phill_brown).
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Open the 'Appearance' menu item and click the 'Menu Rules' link
 1. Add a new menu rule and click ok.
+
+== Changelog ==
+
+= 1.1 =
+* Added new 'force inactive parent' rule
+* Changed behaviour to one rule per item
+* Minor enhancements to PB Framework
+* Cleaned some unused code

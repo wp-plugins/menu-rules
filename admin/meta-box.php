@@ -32,7 +32,7 @@ class Menu_Rules_Meta_Box extends PB_Meta_Box {
 
         // Condition fields
         $fields['conditions_adv'] = array(
-            array(
+            'menu-rules-conditional-exp' => array(
                 'title' => __('When these conditions match:', 'menu-rules'),
                 'type' => 'textarea',
                 'name' => 'menu-rules-conditional-exp',
@@ -47,11 +47,10 @@ class Menu_Rules_Meta_Box extends PB_Meta_Box {
 
         // Rules
         $fields['rules'] = array(
-            array(
-                'title' => __( 'Apply these rules:' , 'menu-rules'),
-                'type' => 'checkbox',
+            'menu-rules-rules' => array(
+                'title' => __( 'Apply this rule:' , 'menu-rules'),
+                'type' => 'radio',
                 'name' => 'menu-rules-rules',
-                'text' => __( 'Choose rules' , 'menu-rules'),
                 'value' => array_combine(
                     array_keys( Menu_Rules::get_var( 'rules_handlers' ) ),
                     array_map( create_function( '$v', 'return $v->description;' ), Menu_Rules::get_var( 'rules_handlers' ) )
@@ -61,7 +60,7 @@ class Menu_Rules_Meta_Box extends PB_Meta_Box {
 
         // Nav menus
         $fields['nav_menus'] = array(
-            array(
+            'menu-rules-menu-items' => array(
                 'title' => __( 'To these menu items:' , 'menu-rules'),
                 'type' => 'select',
                 'name' => 'menu-rules-menu-items',
@@ -91,6 +90,34 @@ class Menu_Rules_Meta_Box extends PB_Meta_Box {
 
         echo PB_Forms::table( $this->get_fields( 'conditions_adv' ), $postmeta );
         echo PB_Forms::table( $this->get_fields( 'rules' ), $postmeta );
+
+        // Backward compatibility notice for 1.0 - 1.1 upgrades
+        if ( count( $postmeta['menu-rules-rules'] ) > 1 ) {
+            echo '<div class="error">';
+
+            echo '<p>' . __( 'We&apos;ve changed the behaviour of Menu Rules so you can only select one rule per Menu Rule item. You have the following rules selected:', 'menu-rules' ) . '</p>';
+
+            echo '<ul>';
+            $menu_rules_rules_field = $this->get_field_def( 'menu-rules-rules' );
+            foreach ( $postmeta['menu-rules-rules'] as $rule_value ) {
+                echo '<li>' . $menu_rules_rules_field['value'][$rule_value] . '</li>';
+            }
+            echo '</ul>';
+
+            echo '<p>' . sprintf(
+                _n( 
+                    'Please apply 1 of these rules to this item. %sThen create another menu rule%s, copy these conditions and menu items and apply the other rule.', 
+                    'Please apply 1 of these rules to this item. %sThen create more menu rules%s, copy these conditions and menu items and apply the other rules.', 
+                    count( $postmeta['menu-rules-rules'] ) - 1, 
+                    'menu-rules' 
+                ),
+                '<a href="' . admin_url( 'post-new.php?post_type=menu_rule' ) . '">',
+                '</a>'
+            ) . '</p>';
+
+            echo '</div>';
+        }
+
         echo PB_Forms::table( $this->get_fields( 'nav_menus' ), $postmeta );
         echo '<p>' . sprintf( __('A full list of conditonal tags can be %sfound on the WordPress.org codex%s. Do not include an if statement or a semicolon.', 'menu-rules'), '<a href="http://codex.wordpress.org/Conditional_Tags" target="_blank">', '</a>' ) . '</p>';
         echo '<h4>' . __('Condition Examples', 'menu-rules') . '</h4>';

@@ -56,9 +56,6 @@ class Menu_Rules_Handler_Active_Parent extends Menu_Rules_Handler {
         return $menu_items;
     }
 
-    protected function setup_parent_classes( $menu_item ) {
-    }
-
     protected function setup_ancestor_classes( &$menu_items, $active_ancestor_item_ids ) {
         $active_ancestor_item_ids = array_filter( array_unique( $active_ancestor_item_ids ) );
         foreach ( $menu_items as &$menu_item ) {

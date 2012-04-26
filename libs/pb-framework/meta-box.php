@@ -83,4 +83,11 @@ abstract class PB_Meta_Box {
         // Cache and return
         return $this->fields_flat = $fields;
     }
+
+    // Get a specific field definition data
+    protected function get_field_def( $name ) {
+        $all_fields = $this->get_fields_flat();
+        //print_r($all_fields);
+        return isset( $all_fields[$name] ) ? $all_fields[$name] : false;
+    }
 }

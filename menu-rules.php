@@ -41,6 +41,7 @@ class Menu_Rules {
 
         // Setup built-in rules handers
         require_once dirname( __FILE__ ) . '/rules/active-parent.php';
+        require_once dirname( __FILE__ ) . '/rules/inactive-parent.php';
         require_once dirname( __FILE__ ) . '/rules/child-page.php';
 
         // Load admin
