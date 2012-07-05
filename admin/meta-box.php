@@ -124,6 +124,7 @@ class Menu_Rules_Meta_Box extends PB_Meta_Box {
         echo '<p>' . sprintf( __('%sis_single()%s applies rules when viewing a single post.', 'menu-rules'), '<code>', '</code>' ) . '</p>';
         echo '<p>' . sprintf( __('%sis_singular( \'product\' )%s applies rules when viewing a single product.', 'menu-rules'), '<code>', '</code>' ) . '</p>';
         echo '<p>' . sprintf( __('%s( is_singular( \'book\' ) || is_singular( \'journal\' ) ) && has_tag( \'fiction\' )%s applies rules when showing a single book or journal which is tagged as fiction', 'menu-rules'), '<code>', '</code>' ) . '</p>';
+        echo '<p>' . sprintf( __('%sis_user_logged_in()%s applies rules if the current user is logged in.', 'menu-rules'), '<code>', '</code>' ) . '</p>';
     }
 
 
