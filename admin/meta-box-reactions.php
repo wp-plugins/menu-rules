@@ -33,7 +33,7 @@ class Menu_Rules_Meta_Box_Reactions extends PB_Meta_Box {
         $this->add_field_group( 'menu-rules', array(
             // Action
             'menu-rules-rules' => array(
-                'title' => __( 'Apply this rule:' , 'menu-rules'),
+                'title' => __( 'Apply this rule:' , 'menu-rules' ),
                 'type' => 'radio',
                 'name' => 'menu-rules-rules',
                 'value' => array_combine(
@@ -43,12 +43,12 @@ class Menu_Rules_Meta_Box_Reactions extends PB_Meta_Box {
             ),
             // Nav menus
             'menu-rules-menu-items' => array(
-                'title' => __( 'To these menu items:' , 'menu-rules'),
+                'title' => __( 'To these menu items:' , 'menu-rules' ),
                 'type' => 'select',
                 'name' => 'menu-rules-menu-items',
                 'value' => $nav_menu_dropdown_values,
                 'multiple' => true,
-                'text' => __( 'Select menu items' , 'menu-rules'),
+                'text' => __( 'Select menu items' , 'menu-rules' ),
                 'extra' => array(
                     'class' => 'menu-rules-items-select',
                     'required' => 'required',
@@ -62,7 +62,7 @@ class Menu_Rules_Meta_Box_Reactions extends PB_Meta_Box {
 
         // User need to create a menu or before using menu rules
         if ( ! $this->get_fields( 'menu-rules' ) ) {
-            echo '<p class="error-message">' . sprintf( __('You haven\'t setup any WordPress custom menus. %sCreate one now to start using Menu Rules%s', 'menu-rules'), '<a href="' . admin_url( 'nav-menus.php' ) . '">', '</a>' ) . '</p>';
+            echo '<p class="error-message">' . sprintf( __( 'You haven\'t setup any WordPress custom menus. %sCreate one now to start using Menu Rules%s', 'menu-rules' ), '<a href="' . admin_url( 'nav-menus.php' ) . '">', '</a>' ) . '</p>';
             return;
         }
 

@@ -57,8 +57,8 @@ class Menu_Rules_Admin {
     // TODO: decouple this from Menu_Rules::init
     static function register_meta_boxes() {
 
-        add_meta_box( 'menu-rules-conditions', __('Conditions'), array( &Menu_Rules_Admin::$meta_box_conditions, 'display' ), Menu_Rules::get_var( 'post_type' ), 'normal' );
+        add_meta_box( 'menu-rules-conditions', __( 'Conditions', 'menu-rules' ), array( &Menu_Rules_Admin::$meta_box_conditions, 'display' ), Menu_Rules::get_var( 'post_type' ), 'normal' );
 
-        add_meta_box( 'menu-rules-reactions', __('Reactions'), array( &Menu_Rules_Admin::$meta_box_reactions, 'display' ), Menu_Rules::get_var( 'post_type' ), 'normal' );
+        add_meta_box( 'menu-rules-reactions', __( 'Reactions', 'menu-rules' ), array( &Menu_Rules_Admin::$meta_box_reactions, 'display' ), Menu_Rules::get_var( 'post_type' ), 'normal' );
     }
 }
