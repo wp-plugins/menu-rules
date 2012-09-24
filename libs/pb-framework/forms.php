@@ -99,7 +99,7 @@ class PB_Forms {
 
 	// Generates a table row
 	static function table_row( $args, $formdata = NULL ) {
-		return self::row_wrap( $args['title'], self::input( $args, $formdata ) );
+		return self::row_wrap( $args, self::input( $args, $formdata ) );
 	}
 
 
@@ -126,14 +126,26 @@ class PB_Forms {
 
 	// Wraps the given content in a <table>
 	static function table_wrap( $content ) {
-		$output = "\n<table class='form-table'>\n" . $content . "\n</table>\n";
+		$output = "\n<table class='form-table pb-framework-table'>\n" . $content . "\n</table>\n";
 
 		return $output;
 	}
 
 	// Wraps the given content in a <tr><td>
-	static function row_wrap( $title, $content ) {
-		return "\n<tr>\n\t<th scope='row'>" . $title . "</th>\n\t<td>\n\t\t" . $content . "\t</td>\n\n</tr>";
+	static function row_wrap( $args, $content ) {
+		$output = '<tr><th scope="row"><label for="' . $args['name'] . '">' . $args['title'] . '</label>';
+
+        // Description below the label
+        if ( isset( $args['description'] ) ) $output .= $args['description'];
+
+        $output .= '</th><td>' . $content;
+
+        // Footer text below the field
+        if ( isset( $args['footer'] ) ) $output .= $args['footer'];
+
+        $output .= '</td></tr>';
+
+        return $output;
 	}
 
 
@@ -222,7 +234,7 @@ class PB_Forms {
 
 			if ( empty( $value ) || empty( $title ) )
 				continue;
-            
+
 			$checkbox_args = array(
 				'type' => 'radio',
 				'value' => $value,
@@ -261,9 +273,9 @@ class PB_Forms {
 
         // Fancy JavaScript form library
         if ( $use_js ) {
-            wp_enqueue_style( 'pb_chosen', plugins_url( '/assets/css/chosen.css', __FILE__ ) );
-            wp_enqueue_script( 'pb_chosen', plugins_url( '/assets/js/chosen.jquery.min.js', __FILE__ ), array( 'jquery' ), false, true );
-            wp_enqueue_script( 'pb', plugins_url( '/assets/js/script.js', __FILE__ ), array( 'pb_chosen' ), false, true );
+            wp_enqueue_style( 'pb-vendor-chosen', plugins_url( '/assets/vendor/chosen/chosen.css', __FILE__ ) );
+            wp_enqueue_script( 'pb-vendor-chosen', plugins_url( '/assets/vendor/chosen/chosen.jquery.min.js', __FILE__ ), array( 'jquery' ), false, true );
+            wp_enqueue_script( 'pb-chosen-init', plugins_url( '/assets/js/init-chosen.js', __FILE__ ), array( 'pb-vendor-chosen' ), false, true );
 
             // Class JS will pickup on
             $extra_classes[] = 'js-chosen';

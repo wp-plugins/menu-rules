@@ -46,8 +46,20 @@ If you're stuck, ask me for help on [Twitter](http://twitter.com/phill_brown).
 
 == Changelog ==
 
+= 1.2 =
+* Conditions and Reactions divided into 2 meta boxes to improve usability
+* Theme improvements
+* Added *description* and *footer* options to PB Framework forms
+* Moved plugin meta box styles into PB Framework
+* Added default meta box display in PB Framework
+* Added field setter for PB Framework meta box class
+* Bugfix where frontend assets weren't being loaded when on a new menu rule
+* Bugfix in meta box get_fields()
+
+**Note:** Some stylesheets and Javascript files have had their handles changed.
+
 = 1.1 =
-* Added new 'force inactive parent' rule
+* Added new *force inactive parent* rule
 * Changed behaviour to one rule per item
 * Minor enhancements to PB Framework
 * Cleaned some unused code

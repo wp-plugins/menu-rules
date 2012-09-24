@@ -1,9 +1,0 @@
-#wpbody-content {
-    overflow: visible !important; /* To cope with chosen select boxes */
-}
-#menu-rules .form-table th {
-    width: 150px;
-}
-#menu-rules .menu-rules-items-select {
-    height: 15em; /* Make main menu box slightly taller */
-}

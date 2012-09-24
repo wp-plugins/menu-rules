@@ -1,0 +1,19 @@
+#wpbody-content {
+    overflow: visible !important; /* To cope with chosen select boxes */
+}
+.pb-framework-table th label {
+    font-weight: bold;
+}
+.pb-framework-table th p {
+    color: #666;
+}
+.pb-framework-table tr td, .postbox .form-table tr th {
+    border-top: 1px solid #dfdfdf;
+    border-bottom: 1px solid #dfdfdf;
+}
+.pb-framework-table tr:first-child td, .postbox .form-table tr:first-child th {
+    border-top: 0 none;
+}
+.pb-framework-table tr:last-child td, .postbox .form-table tr:last-child th {
+    border-bottom: 0 none;
+}

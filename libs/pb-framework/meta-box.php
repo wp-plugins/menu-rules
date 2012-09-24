@@ -1,6 +1,5 @@
 <?php
 
-// TODO: if and when WordPress moves to PHP5.3 requirement, implent the singleton pattern
 abstract class PB_Meta_Box {
 
     // Which post types this meta box is attached to
@@ -16,7 +15,9 @@ abstract class PB_Meta_Box {
     }
 
     // Display meta box
-    abstract function display( $post );
+    function display( $post ) {
+        foreach ( $this->get_fields() as $field_group ) echo PB_Forms::table( $field_group, get_post_custom( $post->ID ) );
+    }
 
     // Save data
     function save( $post_id, $post ) {
@@ -55,9 +56,22 @@ abstract class PB_Meta_Box {
         }
     }
 
+    // Register Stylesheets
+    function styles() {
+        wp_enqueue_style( 'pb-meta-box', plugins_url( '/assets/css/meta-box.css', __FILE__ ) );
+    }
+
+    // Register JavaScript
+    function scripts() {
+    }
+
     // Get all fields in a grouped hierarchical list
     protected function get_fields( $group = '' ) {
-        return $group && isset( $this->fields[$group] ) ? $this->fields[$group] : $this->fields;
+        if ( $group ) {
+            return isset( $this->fields[$group] ) ? $this->fields[$group] : array();
+        } else {
+            return $this->fields;
+        }
     }
 
     // Get all fields in an unstructured flat list
@@ -87,7 +101,11 @@ abstract class PB_Meta_Box {
     // Get a specific field definition data
     protected function get_field_def( $name ) {
         $all_fields = $this->get_fields_flat();
-        //print_r($all_fields);
         return isset( $all_fields[$name] ) ? $all_fields[$name] : false;
+    }
+
+    // Add a group of fields
+    protected function add_field_group( $name, $fields ) {
+        $this->fields[$name] = $fields;
     }
 }
