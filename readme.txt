@@ -3,8 +3,8 @@ Contributors: phill_brown
 Donate link: http://pbweb.co.uk/donate
 Tags: menus, menu, context, rules, parent menu, active menu
 Requires at least: 3.2
-Tested up to: 3.4
-Stable tag: 1.1
+Tested up to: 3.4.2
+Stable tag: 1.2
 
 An extension of the menu system with context-based rules and a flexible framework to write your own.
 
