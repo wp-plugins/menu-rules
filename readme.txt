@@ -55,6 +55,7 @@ If you're stuck, ask me for help on [Twitter](http://twitter.com/phill_brown).
 * Added field setter for PB Framework meta box class
 * Bugfix where frontend assets weren't being loaded when on a new menu rule
 * Bugfix in meta box get_fields()
+* Bugfix for post updated messages
 
 **Note:** Some stylesheets and Javascript files have had their handles changed.
 
