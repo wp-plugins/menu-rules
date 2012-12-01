@@ -50,7 +50,7 @@ class Menu_Rules_Handler_Active_Parent extends Menu_Rules_Handler {
 
         // Loop through once more to setup all ancestor classes
         if ( ! empty( $active_ancestor_item_ids ) ) {
-            $this->setup_ancestor_classes( &$menu_items, $active_ancestor_item_ids );
+            $this->setup_ancestor_classes( $menu_items, $active_ancestor_item_ids );
         }
 
         return $menu_items;
