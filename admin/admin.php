@@ -11,8 +11,7 @@ class Menu_Rules_Admin {
 
         // Include PB Framework
         // This has to be done at plugins_loaded but ideally it should go in the meta box class
-        require dirname( __FILE__ ) . '/../libs/pb-framework/load.php';
-        PB_Framework::load( array( 'meta-box', 'forms' ) );
+        require_once dirname( __FILE__ ) . '/../libs/pb-framework/meta-box.php';
 
         add_action( 'admin_init', __CLASS__ . '::init' );
 
@@ -66,7 +65,7 @@ class Menu_Rules_Admin {
 
     static function post_updated_messages( $messages ) {
         global $post, $post_ID;
-    
+
         $messages[ Menu_Rules::get_var( 'post_type' ) ] = array(
             0 => '',
             1 => __( 'Menu rule updated.', 'menu-rules' ),
@@ -80,7 +79,7 @@ class Menu_Rules_Admin {
             9 => __( 'Menu rule scheduled for.', 'menu-rules' ),
             10 => __( 'Menu rule draft updated.', 'menu-rules' ),
         );
-    
+
         return $messages;
     }
 }

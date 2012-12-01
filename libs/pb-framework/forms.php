@@ -3,11 +3,12 @@
 // Form framework wrapper
 // Forked from scb-framework: http://scribu.net/wordpress/scb-framework
 // New features include: multiple select boxes, optgroups
-// TODO: Make singleton to allow class extensions
+
+if ( ! class_exists( 'PB_Forms' ) ):
 
 // On plugins_loaded
 require dirname( __FILE__ ) . '/../scb-framework/scb/load.php';
-scb_init( /* create_function( '', 'require_once dirname( __FILE__ ) . "/../libs/pb-framework/forms.php";' ) */ );
+scb_init();
 
 class PB_Forms {
 
@@ -578,3 +579,5 @@ class PB_Form {
 		return PB_Forms::input( $args );
 	}
 }
+
+endif;

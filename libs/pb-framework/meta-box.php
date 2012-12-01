@@ -1,5 +1,9 @@
 <?php
 
+if ( ! class_exists( 'PB_Meta_Box' ) ):
+
+require_once dirname( __FILE__ ) . '/forms.php';
+
 abstract class PB_Meta_Box {
 
     // Which post types this meta box is attached to
@@ -109,3 +113,5 @@ abstract class PB_Meta_Box {
         $this->fields[$name] = $fields;
     }
 }
+
+endif;
