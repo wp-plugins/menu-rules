@@ -4,7 +4,7 @@ Plugin Name: Menu rules
 Description: An extension of the menu system with context-based rules and a flexible framework to write your own.
 Author: Phill Brown
 Author URI: http://pbweb.co.uk
-Version: 1.2
+Version: 1.2.1
 
 Copyright 2012 Phill Brown (email: wp@pbweb.co.uk)
 

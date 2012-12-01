@@ -3,8 +3,8 @@ Contributors: phill_brown
 Donate link: http://pbweb.co.uk/donate
 Tags: menus, menu, context, rules, parent menu, active menu
 Requires at least: 3.2
-Tested up to: 3.4.2
-Stable tag: 1.2
+Tested up to: 3.5
+Stable tag: 1.2.1
 
 An extension of the menu system with context-based rules and a flexible framework to write your own.
 
@@ -45,6 +45,9 @@ If you're stuck, ask me for help on [Twitter](http://twitter.com/phill_brown).
 1. Add a new menu rule and click ok.
 
 == Changelog ==
+
+= 1.2.1 =
+* Fixed fatal bug in PHP 5.4
 
 = 1.2 =
 * Conditions and Reactions divided into 2 meta boxes to improve usability
