@@ -22,6 +22,9 @@ class Menu_Rules_Admin {
         add_action( 'admin_print_scripts-post-new.php', __CLASS__ . '::scripts' );
 
         add_filter( 'post_updated_messages', __CLASS__ . '::post_updated_messages' );
+
+        // Context Manager upgrade nag
+        add_action( 'admin_notices', __CLASS__ . '::upgrade_context_manager' );
     }
 
     // On admin_init
@@ -81,5 +84,21 @@ class Menu_Rules_Admin {
         );
 
         return $messages;
+    }
+
+    static function upgrade_context_manager() {
+        if ( ! current_user_can( 'install_plugins' ) ) return;
+
+        if ( $GLOBALS['pagenow'] != 'edit.php' ) return;
+        if ( $GLOBALS['post_type_object']->name != Menu_Rules::get_var( 'post_type' ) ) return;
+
+        echo '
+            <div class="updated">
+                <p>' . 
+                    sprintf( __( 'Menu Rules has been superseded by %sContext Manager%s &ndash; more features, less coding.' ), '<a href="http://wordpress.org/extend/plugins/context-manager/">', '</a>' ) . 
+                    ' ' .
+                    sprintf( __( '%sInstall Now%s.' ), '<a href="' . admin_url( 'plugin-install.php?tab=search&s=context+manager' ) . '">', '</a>' ) . ' 
+                </p>
+            </div>';
     }
 }

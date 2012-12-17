@@ -4,11 +4,19 @@ Donate link: http://pbweb.co.uk/donate
 Tags: menus, menu, context, rules, parent menu, active menu
 Requires at least: 3.2
 Tested up to: 3.5
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 
 An extension of the menu system with context-based rules and a flexible framework to write your own.
 
 == Description ==
+
+**[This plugin has been replaced by Context Manager](http://wordpress.org/extend/plugins/context-manager/)**
+
+Context Manager does the same job as Menu Rules, but comes with many more features to save you time and unnecessary coding. 
+
+Menu Rules can run alongside Context Manager while you migrate your rules across. [Speak to me on Twitter](http://twitter.com/phill_brown) if you need any help with the transfer.
+
+= About Menu Rules =
 
 In WordPress there's no way to apply context to the menu system. Menu Rules solves this problem and gives you a framework to write your own menu extensions.
 
@@ -46,6 +54,9 @@ If you're stuck, ask me for help on [Twitter](http://twitter.com/phill_brown).
 
 == Changelog ==
 
+= 1.2.2 =
+* Upgrade notice to Context Manager
+
 = 1.2.1 =
 * Fixed fatal bug in PHP 5.4
 
@@ -67,3 +78,8 @@ If you're stuck, ask me for help on [Twitter](http://twitter.com/phill_brown).
 * Changed behaviour to one rule per item
 * Minor enhancements to PB Framework
 * Cleaned some unused code
+
+== Upgrade Notice ==
+
+= 1.2.2 =
+Menu Rules has been superseded by Context Manager - more features, less coding. This plugin is being deprecated.
